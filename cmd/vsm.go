@@ -98,9 +98,10 @@ func OnRiding(user User, v *Vechile) error {
 //OnBatteryLow state event
 func OnBatteryLow(user User, v *Vechile) error {
 
-	//TODO: If user is riding and battery gets low, next transition when user is finished riding should be Bounty
+	//TODO: ready => batter-low should be valid state?
 	if user == System {
 		//Checks if trasition is valid
+		//TODO: Check if battery is under 20%?
 		if v.State == Riding {
 			v.State = BatteryLow
 			return nil
@@ -114,9 +115,10 @@ func OnBatteryLow(user User, v *Vechile) error {
 func OnBounty(user User, v *Vechile) error {
 
 	//TODO: Which system? dev, preprod prod?
+	//Another event which comfirms time is after 9:30? busniess logic in event or keep logic on consumer of the API?
 	if user == System {
 		//Checks if trasition is valid
-		if v.State == BatteryLow {
+		if v.State == BatteryLow || v.State == Ready {
 			v.State = Bounty
 			return nil
 		}

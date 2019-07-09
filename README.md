@@ -1,11 +1,11 @@
 Vechile state machine. 
 
-Used to keep trach of different vechiles and there states. Implemented in Go.
+Used to keep trach of different vechiles and there states, implemented in go. Contains unit tests and example. 
 
 User roles:
 	EndUser 
 	Hunter
-	System //Used to trigger automatic states by "overhead orchestrating system"
+	System 
 	Admin
 
 Valid states:
